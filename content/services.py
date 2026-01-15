@@ -28,3 +28,11 @@ class ContentService:
         if "python" in title.lower(): tags.append("coding")
         if "math" in title.lower(): tags.append("notation") # FR11 uyumu için
         return tags
+    def edit_content(self, title, new_difficulty):
+        """
+        Updates the difficulty of an existing content (UC11 Edit).
+        Necessary for AI to adjust learning paths (FR7).
+        """
+        print(f"Editing content: {title}...")
+        # In a real app, we would update the database here
+        return {"status": "updated", "new_difficulty": new_difficulty}
