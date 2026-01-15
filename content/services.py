@@ -36,3 +36,19 @@ class ContentService:
         print(f"Editing content: {title}...")
         # In a real app, we would update the database here
         return {"status": "updated", "new_difficulty": new_difficulty}
+    # content/services.py (Update the upload part)
+from tagging_service import TaggingService
+
+class ContentService:
+    def upload_content(self, data):
+        # 1. Generate detailed tags using the new service
+        metadata = TaggingService.generate_detailed_tags(data['title'], data.get('description', ''))
+        
+        # 2. Create content with instructor assignment
+        print(f"Assigning content to Instructor: {data['instructor_id']}")
+        
+        return {
+            "status": "success",
+            "topic": metadata["topic"],
+            "difficulty": metadata["difficulty"]
+        }

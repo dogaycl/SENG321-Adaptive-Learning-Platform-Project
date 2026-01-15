@@ -1,8 +1,15 @@
-# content/models.py
+# content/models.py updated
 
-class DersIcerigi:
-    def __init__(self, baslik, tur, zorluk):
-        self.baslik = baslik     # Dersin adı
-        self.tur = tur           # Video mu, yazı mı? (FR10)
-        self.zorluk = zorluk     # 1'den 5'e kadar zorluk (FR7)
-        self.aktif_mi = True     # Yayında mı?
+class Content:
+    def __init__(self, title, content_type, instructor_id, metadata):
+        self.title = title
+        self.content_type = content_type
+        self.instructor_id = instructor_id # Assigned Instructor
+        
+        # Detailed Tagging (UC12)
+        self.topic = metadata.get("topic")
+        self.outcome = metadata.get("outcome")
+        self.difficulty = metadata.get("difficulty") # FR7
+        
+        self.is_active = True
+        
